@@ -1,0 +1,8 @@
+# AI Agent Showcase Website
+
+node_modules/
+.DS_Store
+*.log
+.env
+.vscode/
+.idea/
