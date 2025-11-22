@@ -686,16 +686,32 @@
             // Set initial volume
             music.volume = 0.3;
 
-            // Music Toggle
-            musicBtn.addEventListener('click', () => {
+            // Function to handle play state
+            const playMusic = () => {
+                music.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    // Remove interaction listeners once played
+                    document.removeEventListener('click', playMusic);
+                    document.removeEventListener('keydown', playMusic);
+                    document.removeEventListener('scroll', playMusic);
+                }).catch(error => {
+                    console.log("Auto-play prevented by browser, waiting for interaction.");
+                });
+            };
+
+            // Try to play immediately
+            playMusic();
+
+            // Add listeners for first interaction (fallback)
+            document.addEventListener('click', playMusic, { once: true });
+            document.addEventListener('keydown', playMusic, { once: true });
+            document.addEventListener('scroll', playMusic, { once: true });
+
+            // Music Toggle Button Click
+            musicBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the document click listener
                 if (music.paused) {
-                    music.play().then(() => {
-                        musicBtn.classList.add('playing');
-                        // Optional: Open lyrics when music starts
-                        // lyricsPanel.classList.add('active');
-                    }).catch(error => {
-                        console.log("Audio play failed:", error);
-                    });
+                    playMusic();
                 } else {
                     music.pause();
                     musicBtn.classList.remove('playing');
