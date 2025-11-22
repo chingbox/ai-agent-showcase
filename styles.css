@@ -1,25 +1,28 @@
 /* ===== CSS Variables & Design System ===== */
 :root {
-    /* Colors - Updated to match poster design */
+    /* Colors - Updated to match poster design with higher saturation */
     --color-bg-primary: #2b2d42;
     --color-bg-secondary: #1f2137;
     --color-bg-card: rgba(43, 45, 66, 0.6);
     --color-bg-card-hover: rgba(43, 45, 66, 0.8);
 
-    /* Accent Colors - Poster inspired purple-blue gradient */
-    --color-primary: #b8b8d1;
-    --color-secondary: #a8c5dd;
-    --color-accent: #d4a5d4;
+    /* Accent Colors - Increased saturation */
+    --color-primary: #a3a3cc;
+    /* More saturated purple */
+    --color-secondary: #8ab6d6;
+    /* More saturated blue */
+    --color-accent: #d991d9;
+    /* More saturated pink-purple */
     --color-text-primary: #ffffff;
     --color-text-secondary: #d1d5db;
     --color-text-muted: #9ca3af;
 
-    /* Gradients - Poster style purple to blue */
-    --gradient-primary: linear-gradient(135deg, #b8b8d1 0%, #a8c5dd 100%);
-    --gradient-accent: linear-gradient(135deg, #d4a5d4 0%, #b8b8d1 100%);
-    --gradient-orb-1: radial-gradient(circle, rgba(184, 184, 209, 0.15) 0%, transparent 70%);
-    --gradient-orb-2: radial-gradient(circle, rgba(168, 197, 221, 0.15) 0%, transparent 70%);
-    --gradient-orb-3: radial-gradient(circle, rgba(212, 165, 212, 0.1) 0%, transparent 70%);
+    /* Gradients - More vibrant */
+    --gradient-primary: linear-gradient(135deg, #a3a3cc 0%, #8ab6d6 100%);
+    --gradient-accent: linear-gradient(135deg, #d991d9 0%, #a3a3cc 100%);
+    --gradient-orb-1: radial-gradient(circle, rgba(163, 163, 204, 0.2) 0%, transparent 70%);
+    --gradient-orb-2: radial-gradient(circle, rgba(138, 182, 214, 0.2) 0%, transparent 70%);
+    --gradient-orb-3: radial-gradient(circle, rgba(217, 145, 217, 0.15) 0%, transparent 70%);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -44,13 +47,69 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 40px rgba(184, 184, 209, 0.3);
-    --shadow-glow-accent: 0 0 40px rgba(168, 197, 221, 0.3);
+    --shadow-glow: 0 0 40px rgba(163, 163, 204, 0.4);
+    --shadow-glow-accent: 0 0 40px rgba(138, 182, 214, 0.4);
 
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
     --transition-slow: 0.5s ease;
+}
+
+/* ... (keep existing styles) ... */
+
+/* ===== Flowing Wave Lines ===== */
+.wave-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.wave-line {
+    animation: flowLine 25s linear infinite;
+    fill: none;
+    stroke-width: 2;
+}
+
+.wave-line-1 {
+    stroke: rgba(163, 163, 204, 0.25);
+    /* More saturated purple */
+    stroke-dasharray: 15 25 10 30 5 20;
+    /* Irregular pattern */
+    animation-delay: 0s;
+    animation-duration: 28s;
+}
+
+.wave-line-2 {
+    stroke: rgba(138, 182, 214, 0.2);
+    /* More saturated blue */
+    stroke-dasharray: 20 15 30 10 25 20;
+    /* Different irregular pattern */
+    animation-delay: -9s;
+    animation-duration: 35s;
+}
+
+.wave-line-3 {
+    stroke: rgba(217, 145, 217, 0.18);
+    /* More saturated pink */
+    stroke-dasharray: 10 30 5 25 15 20;
+    /* Another irregular pattern */
+    animation-delay: -18s;
+    animation-duration: 32s;
+}
+
+@keyframes flowLine {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 1000;
+    }
 }
 
 /* ===== Reset & Base Styles ===== */
@@ -350,7 +409,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 60px rgba(184, 184, 209, 0.5);
+    box-shadow: 0 0 60px rgba(163, 163, 204, 0.6);
 }
 
 /* ===== Hero Instructors Section ===== */
@@ -397,7 +456,7 @@ body {
 
 .instructor-avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 60px rgba(184, 184, 209, 0.5);
+    box-shadow: 0 0 60px rgba(163, 163, 204, 0.6);
 }
 
 .instructor-avatar img {
