@@ -833,6 +833,78 @@ section {
     font-size: 0.95rem;
 }
 
+/* ===== Achievements Section ===== */
+.achievements-section {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-3xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievements-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+}
+
+.achievements-text h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.achievements-text p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+}
+
+.achievements-text .paper-title {
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+.achievements-text .paper-title em {
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+
+.achievements-photo {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base);
+}
+
+.achievements-photo:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.achievements-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .achievements-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .achievements-photo {
+        order: -1;
+        /* Photo first on mobile */
+    }
+}
+
+
 /* ===== Footer ===== */
 .footer {
     background: var(--color-bg-secondary);
@@ -1181,6 +1253,4 @@ section {
 .lyrics-content::-webkit-scrollbar-thumb {
     background: var(--color-secondary);
     border-radius: 2px;
-}
-
 }
