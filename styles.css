@@ -58,60 +58,6 @@
 
 /* ... (keep existing styles) ... */
 
-/* ===== Flowing Wave Lines ===== */
-.wave-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.9;
-}
-
-.wave-line {
-    animation: flowLine 25s linear infinite;
-    fill: none;
-    stroke-width: 2;
-}
-
-.wave-line-1 {
-    stroke: rgba(163, 163, 204, 0.25);
-    /* More saturated purple */
-    stroke-dasharray: 15 25 10 30 5 20;
-    /* Irregular pattern */
-    animation-delay: 0s;
-    animation-duration: 28s;
-}
-
-.wave-line-2 {
-    stroke: rgba(138, 182, 214, 0.2);
-    /* More saturated blue */
-    stroke-dasharray: 20 15 30 10 25 20;
-    /* Different irregular pattern */
-    animation-delay: -9s;
-    animation-duration: 35s;
-}
-
-.wave-line-3 {
-    stroke: rgba(217, 145, 217, 0.18);
-    /* More saturated pink */
-    stroke-dasharray: 10 30 5 25 15 20;
-    /* Another irregular pattern */
-    animation-delay: -18s;
-    animation-duration: 32s;
-}
-
-@keyframes flowLine {
-    0% {
-        stroke-dashoffset: 0;
-    }
-
-    100% {
-        stroke-dashoffset: 1000;
-    }
-}
-
 /* ===== Reset & Base Styles ===== */
 * {
     margin: 0;
