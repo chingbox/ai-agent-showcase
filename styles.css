@@ -851,3 +851,9 @@ section {
         margin-bottom: var(--spacing-xl);
     }
 }
+
+/* Utility Classes */
+.text-highlight {
+    color: var(--color-primary);
+    font-weight: 600;
+}
