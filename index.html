@@ -582,6 +582,22 @@
         </div>
     </footer>
 
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="assets/audio/dreams_in_motion.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">
+        <div class="music-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
     <script src="script.js"></script>
     <!-- Interactive Background Script -->
     <script>
@@ -596,6 +612,28 @@
                 // Set CSS variables for the offset
                 orb.style.setProperty('--tx', `${xOffset}px`);
                 orb.style.setProperty('--ty', `${yOffset}px`);
+            });
+        });
+
+        // Music Control Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const music = document.getElementById('bg-music');
+            const toggleBtn = document.getElementById('music-toggle');
+
+            // Set initial volume
+            music.volume = 0.3;
+
+            toggleBtn.addEventListener('click', () => {
+                if (music.paused) {
+                    music.play().then(() => {
+                        toggleBtn.classList.add('playing');
+                    }).catch(error => {
+                        console.log("Audio play failed:", error);
+                    });
+                } else {
+                    music.pause();
+                    toggleBtn.classList.remove('playing');
+                }
             });
         });
     </script>
