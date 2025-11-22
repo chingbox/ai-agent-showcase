@@ -930,31 +930,42 @@ section {
     text-shadow: 0 0 10px rgba(127, 0, 255, 0.5);
 }
 
-/* ===== Music Toggle Button ===== */
-.music-toggle {
+/* ===== Music & Lyrics Controls ===== */
+.music-controls {
     position: fixed;
     bottom: 30px;
     right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+    align-items: center;
+}
+
+.control-btn {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background: rgba(10, 10, 21, 0.8);
     border: 2px solid var(--color-secondary);
     cursor: pointer;
-    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
+    color: var(--color-secondary);
+    font-size: 1.2rem;
 }
 
-.music-toggle:hover {
+.control-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 25px var(--color-secondary);
+    background: var(--color-secondary);
+    color: var(--color-bg-primary);
 }
 
+/* Music Toggle Specifics */
 .music-toggle.playing {
     border-color: var(--color-primary);
     box-shadow: 0 0 20px var(--color-primary);
@@ -969,7 +980,8 @@ section {
 
 .music-icon span {
     width: 3px;
-    background: var(--color-secondary);
+    background: currentColor;
+    /* Inherit color from button */
     border-radius: 2px;
     animation: none;
 }
@@ -1010,3 +1022,99 @@ section {
         transform: scaleY(0.5);
     }
 }
+
+/* ===== Holographic Lyrics Panel ===== */
+.lyrics-panel {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 300px;
+    max-height: 400px;
+    background: rgba(10, 10, 21, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    z-index: 999;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transform-origin: bottom right;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy effect */
+    pointer-events: none;
+}
+
+.lyrics-panel.active {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lyrics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.lyrics-header h3 {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px var(--color-secondary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--color-primary);
+}
+
+.lyrics-content {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.lyrics-content p {
+    margin-bottom: 1rem;
+}
+
+.lyrics-content .chorus {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(127, 0, 255, 0.3);
+    border-left: 2px solid var(--color-primary);
+    padding-left: 0.8rem;
+}
+
+/* Custom Scrollbar */
+.lyrics-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.lyrics-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lyrics-content::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border-radius: 2px;
+}
+
+```

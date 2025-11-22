@@ -568,16 +568,17 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>AI Agent 使用者經驗研究與產品開發</h3>
-                    <p>國立臺北科技大學創新研究與技術發展成長社群</p>
-                    <p>設計學院工業設計系</p>
+                    <p>本計畫由 國立臺北科技大學 研發處 補助</p>
+                    <p>設計學院 工業設計系 創新設計碩士班</p>
                 </div>
                 <div class="footer-meta">
-                    <p>召集人：陳靜儀</p>
-                    <p>活動期間：2025年5月1日 - 2025年12月31日</p>
+                    <p>網頁設計：陳靜儀</p>
+                    <p>網頁技術：Google Antigravity</p>
+                    <p>背景音樂：SUNO (Dream in Motion)</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 國立臺北科技大學. All rights reserved.</p>
+                <p>&copy; 2025 脈絡設計研究室. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -589,14 +590,65 @@
     </audio>
 
     <!-- Music Toggle Button -->
-    <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">
-        <div class="music-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+    <div class="music-controls">
+        <button id="lyrics-toggle" class="control-btn" aria-label="Toggle Lyrics">
+            <span class="icon">📝</span>
+        </button>
+        <button id="music-toggle" class="control-btn music-toggle" aria-label="Toggle Music">
+            <div class="music-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Holographic Lyrics Panel -->
+    <div id="lyrics-panel" class="lyrics-panel">
+        <div class="lyrics-header">
+            <h3>Dreams in Motion</h3>
+            <button id="close-lyrics" class="close-btn">×</button>
         </div>
-    </button>
+        <div class="lyrics-content">
+            <p>Pencil to paper the first line’s a spark<br>
+                Shadows and colors painting the dark<br>
+                A thousand ideas swirling<br>
+                Flying<br>
+                Unchained</p>
+
+            <p>What if we fail<br>
+                What if we fall<br>
+                But what if we rise<br>
+                Higher than it all</p>
+
+            <p class="chorus">Dreams in motion<br>
+                Hearts collide<br>
+                Together we’ll light up the sky<br>
+                Step by step<br>
+                Let’s make it real<br>
+                This is the moment<br>
+                This is the deal</p>
+
+            <p>Blueprints are messy but they’ve got soul<br>
+                Hands covered in paint<br>
+                We’re losing control<br>
+                Laughing and shouting<br>
+                We’re breaking the rules</p>
+
+            <p>What if we doubt<br>
+                What if we fear<br>
+                But what if the answer’s already here</p>
+
+            <p class="chorus">Dreams in motion<br>
+                Hearts collide<br>
+                Together we’ll light up the sky<br>
+                Step by step<br>
+                Let’s make it real<br>
+                This is the moment<br>
+                This is the deal</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <!-- Interactive Background Script -->
@@ -618,25 +670,42 @@
         // Music Control Script
         document.addEventListener('DOMContentLoaded', () => {
             const music = document.getElementById('bg-music');
-            const toggleBtn = document.getElementById('music-toggle');
+            const musicBtn = document.getElementById('music-toggle');
+            const lyricsBtn = document.getElementById('lyrics-toggle');
+            const lyricsPanel = document.getElementById('lyrics-panel');
+            const closeLyricsBtn = document.getElementById('close-lyrics');
 
             // Set initial volume
             music.volume = 0.3;
 
-            toggleBtn.addEventListener('click', () => {
+            // Music Toggle
+            musicBtn.addEventListener('click', () => {
                 if (music.paused) {
                     music.play().then(() => {
-                        toggleBtn.classList.add('playing');
+                        musicBtn.classList.add('playing');
+                        // Optional: Open lyrics when music starts
+                        // lyricsPanel.classList.add('active');
                     }).catch(error => {
                         console.log("Audio play failed:", error);
                     });
                 } else {
                     music.pause();
-                    toggleBtn.classList.remove('playing');
+                    musicBtn.classList.remove('playing');
                 }
+            });
+
+            // Lyrics Toggle
+            const toggleLyrics = () => {
+                lyricsPanel.classList.toggle('active');
+            };
+
+            lyricsBtn.addEventListener('click', toggleLyrics);
+            closeLyricsBtn.addEventListener('click', () => {
+                lyricsPanel.classList.remove('active');
             });
         });
     </script>
 </body>
 
 </html>
+```
