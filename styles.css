@@ -171,6 +171,63 @@ body {
     }
 }
 
+/* ===== Liquid Orbs ===== */
+.liquid-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    z-index: -1;
+    /* Behind the dot grid */
+    transition: transform 0.1s ease-out;
+    /* Smooth movement for JS interaction */
+    animation: morph 15s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-primary);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-secondary);
+    bottom: 20%;
+    right: 10%;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-accent);
+    top: 40%;
+    left: 40%;
+    animation-delay: -10s;
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(var(--tx, 0), var(--ty, 0)) rotate(0deg);
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: translate(calc(var(--tx, 0) + 50px), calc(var(--ty, 0) + 30px)) rotate(180deg);
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(calc(var(--tx, 0) - 20px), calc(var(--ty, 0) - 50px)) rotate(360deg);
+    }
+}
+
 /* ===== Flowing Wave Lines ===== */
 .wave-lines {
     position: absolute;

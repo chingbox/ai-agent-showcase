@@ -20,6 +20,11 @@
         <div class="dot-wave"></div>
         <div class="dot-wave"></div>
         <div class="dot-wave"></div>
+
+        <!-- Liquid Orbs -->
+        <div class="liquid-orb orb-1"></div>
+        <div class="liquid-orb orb-2"></div>
+        <div class="liquid-orb orb-3"></div>
     </div>
 
     <!-- Hero Section -->
@@ -578,6 +583,22 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Interactive Background Script -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.liquid-orb');
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 15; // Adjust speed factor
+                const xOffset = (window.innerWidth / 2 - e.clientX) / speed;
+                const yOffset = (window.innerHeight / 2 - e.clientY) / speed;
+
+                // Set CSS variables for the offset
+                orb.style.setProperty('--tx', `${xOffset}px`);
+                orb.style.setProperty('--ty', `${yOffset}px`);
+            });
+        });
+    </script>
 </body>
 
 </html>
