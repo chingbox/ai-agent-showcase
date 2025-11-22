@@ -6,23 +6,23 @@
     --color-bg-card: rgba(43, 45, 66, 0.6);
     --color-bg-card-hover: rgba(43, 45, 66, 0.8);
 
-    /* Accent Colors - Increased saturation */
-    --color-primary: #a3a3cc;
-    /* More saturated purple */
-    --color-secondary: #8ab6d6;
-    /* More saturated blue */
-    --color-accent: #d991d9;
-    /* More saturated pink-purple */
+    /* Accent Colors - Increased saturation (V2) */
+    --color-primary: #8f8fcc;
+    /* More vivid purple */
+    --color-secondary: #6ca0d6;
+    /* More vivid blue */
+    --color-accent: #d96cd9;
+    /* More vivid pink-purple */
     --color-text-primary: #ffffff;
     --color-text-secondary: #d1d5db;
     --color-text-muted: #9ca3af;
 
     /* Gradients - More vibrant */
-    --gradient-primary: linear-gradient(135deg, #a3a3cc 0%, #8ab6d6 100%);
-    --gradient-accent: linear-gradient(135deg, #d991d9 0%, #a3a3cc 100%);
-    --gradient-orb-1: radial-gradient(circle, rgba(163, 163, 204, 0.2) 0%, transparent 70%);
-    --gradient-orb-2: radial-gradient(circle, rgba(138, 182, 214, 0.2) 0%, transparent 70%);
-    --gradient-orb-3: radial-gradient(circle, rgba(217, 145, 217, 0.15) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, #8f8fcc 0%, #6ca0d6 100%);
+    --gradient-accent: linear-gradient(135deg, #d96cd9 0%, #8f8fcc 100%);
+    --gradient-orb-1: radial-gradient(circle, rgba(143, 143, 204, 0.25) 0%, transparent 70%);
+    --gradient-orb-2: radial-gradient(circle, rgba(108, 160, 214, 0.25) 0%, transparent 70%);
+    --gradient-orb-3: radial-gradient(circle, rgba(217, 108, 217, 0.2) 0%, transparent 70%);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -47,8 +47,8 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 40px rgba(163, 163, 204, 0.4);
-    --shadow-glow-accent: 0 0 40px rgba(138, 182, 214, 0.4);
+    --shadow-glow: 0 0 40px rgba(143, 143, 204, 0.5);
+    --shadow-glow-accent: 0 0 40px rgba(108, 160, 214, 0.5);
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -305,7 +305,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 60px rgba(163, 163, 204, 0.6);
+    box-shadow: 0 0 60px rgba(143, 143, 204, 0.6);
 }
 
 /* ===== Hero Instructors Section ===== */
@@ -352,7 +352,7 @@ body {
 
 .instructor-avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 60px rgba(163, 163, 204, 0.6);
+    box-shadow: 0 0 60px rgba(143, 143, 204, 0.6);
 }
 
 .instructor-avatar img {
