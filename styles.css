@@ -1,28 +1,36 @@
+```css
+
 /* ===== CSS Variables & Design System ===== */
 :root {
-    /* Colors - Updated to match poster design with higher saturation */
-    --color-bg-primary: #2b2d42;
-    --color-bg-secondary: #1f2137;
-    --color-bg-card: rgba(43, 45, 66, 0.6);
-    --color-bg-card-hover: rgba(43, 45, 66, 0.8);
+    /* Colors - Cyberpunk Neon Theme */
+    --color-bg-primary: #050510;
+    /* Deepest Blue/Black */
+    --color-bg-secondary: #0a0a15;
+    /* Slightly lighter dark */
+    --color-bg-card: rgba(10, 10, 21, 0.7);
+    --color-bg-card-hover: rgba(20, 20, 35, 0.8);
 
-    /* Accent Colors - Increased saturation (V2) */
-    --color-primary: #8f8fcc;
-    /* More vivid purple */
-    --color-secondary: #6ca0d6;
-    /* More vivid blue */
-    --color-accent: #d96cd9;
-    /* More vivid pink-purple */
+    /* Accent Colors - High Saturation Neon */
+    --color-primary: #FF0099;
+    /* Neon Pink */
+    --color-secondary: #00F0FF;
+    /* Electric Cyan */
+    --color-accent: #7000FF;
+    /* Electric Purple */
+
     --color-text-primary: #ffffff;
-    --color-text-secondary: #d1d5db;
-    --color-text-muted: #9ca3af;
+    --color-text-secondary: #e0f0ff;
+    /* Slight blue tint */
+    --color-text-muted: #8899aa;
 
-    /* Gradients - More vibrant */
-    --gradient-primary: linear-gradient(135deg, #8f8fcc 0%, #6ca0d6 100%);
-    --gradient-accent: linear-gradient(135deg, #d96cd9 0%, #8f8fcc 100%);
-    --gradient-orb-1: radial-gradient(circle, rgba(143, 143, 204, 0.25) 0%, transparent 70%);
-    --gradient-orb-2: radial-gradient(circle, rgba(108, 160, 214, 0.25) 0%, transparent 70%);
-    --gradient-orb-3: radial-gradient(circle, rgba(217, 108, 217, 0.2) 0%, transparent 70%);
+    /* Gradients - High Contrast */
+    --gradient-primary: linear-gradient(135deg, #FF0099 0%, #7000FF 100%);
+    --gradient-accent: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
+
+    /* Orb Gradients - Neon Glows */
+    --gradient-orb-1: radial-gradient(circle, rgba(255, 0, 153, 0.15) 0%, transparent 70%);
+    --gradient-orb-2: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+    --gradient-orb-3: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -38,17 +46,20 @@
     --font-secondary: 'Noto Sans TC', sans-serif;
 
     /* Border Radius */
-    --radius-sm: 0.5rem;
-    --radius-md: 1rem;
-    --radius-lg: 1.5rem;
-    --radius-xl: 2rem;
+    --radius-sm: 0.25rem;
+    /* Sharper corners for cyberpunk */
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
 
-    /* Shadows - Updated for new color scheme */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 40px rgba(143, 143, 204, 0.5);
-    --shadow-glow-accent: 0 0 40px rgba(108, 160, 214, 0.5);
+    /* Shadows - Neon Glows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 20px rgba(255, 0, 153, 0.6);
+    /* Pink Glow */
+    --shadow-glow-accent: 0 0 20px rgba(0, 240, 255, 0.6);
+    /* Cyan Glow */
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -119,8 +130,8 @@ body {
     height: 200%;
     left: -50%;
     top: -50%;
-    /* Create a grid of dots */
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 2px, transparent 2.5px);
+    /* Create a grid of dots - Neon Cyan */
+    background-image: radial-gradient(circle, rgba(0, 240, 255, 0.4) 2px, transparent 2.5px);
     background-size: 40px 40px;
 
     /* 3D Transform to create the "surface" look */
@@ -288,24 +299,28 @@ body {
 }
 
 .cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    padding: 1rem 2rem;
-    background: var(--gradient-primary);
-    color: var(--color-text-primary);
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--color-secondary);
     text-decoration: none;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     font-weight: 600;
-    font-size: 1.125rem;
     transition: all var(--transition-base);
-    box-shadow: var(--shadow-glow);
+    border: 2px solid var(--color-secondary);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
     animation: fadeInUp 0.8s ease 0.8s backwards;
 }
 
 .cta-button:hover {
+    background: var(--color-secondary);
+    color: var(--color-bg-primary);
     transform: translateY(-2px);
-    box-shadow: 0 0 60px rgba(143, 143, 204, 0.6);
+    box-shadow: 0 0 30px var(--color-secondary);
 }
 
 /* ===== Hero Instructors Section ===== */
@@ -352,7 +367,8 @@ body {
 
 .instructor-avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 60px rgba(143, 143, 204, 0.6);
+    box-shadow: 0 0 30px var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .instructor-avatar img {
@@ -855,5 +871,6 @@ section {
 /* Utility Classes */
 .text-highlight {
     color: var(--color-primary);
-    font-weight: 600;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 0, 153, 0.5);
 }
