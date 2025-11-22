@@ -458,6 +458,36 @@ section {
     margin-bottom: var(--spacing-md);
 }
 
+.timeline-photo {
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-bg-secondary);
+}
+
+.activity-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;
+    opacity: 0.3;
+    filter: blur(2px);
+    transition: all var(--transition-base);
+}
+
+.timeline-photo:hover .activity-image {
+    opacity: 0.5;
+}
+
+.photo-caption {
+    padding: var(--spacing-sm);
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
 .timeline-meta {
     display: flex;
     gap: var(--spacing-sm);
