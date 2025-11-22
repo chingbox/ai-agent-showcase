@@ -36,29 +36,37 @@ document.querySelectorAll('.project-card').forEach(card => {
     observer.observe(card);
 });
 
+
 // ===== Animated Background Orbs - Mouse Interaction =====
-const orbs = document.querySelectorAll('.orb');
+const orbs = document.querySelectorAll('.liquid-orb');
+const cursorGlow = document.querySelector('.cursor-glow');
 let mouseX = 0;
 let mouseY = 0;
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+
+    // Update cursor glow position
+    if (cursorGlow) {
+        cursorGlow.style.transform = `translate(${mouseX - 300}px, ${mouseY - 300}px)`;
+    }
 });
 
 function animateOrbs() {
     orbs.forEach((orb, index) => {
-        const speed = (index + 1) * 0.02;
+        const speed = (index + 1) * 0.06; // 3x stronger parallax (was 0.02)
         const x = (mouseX - window.innerWidth / 2) * speed;
         const y = (mouseY - window.innerHeight / 2) * speed;
-        
+
         orb.style.transform = `translate(${x}px, ${y}px)`;
     });
-    
+
     requestAnimationFrame(animateOrbs);
 }
 
 animateOrbs();
+
 
 // ===== Project Card Tilt Effect =====
 document.querySelectorAll('.project-card').forEach(card => {
@@ -66,16 +74,16 @@ document.querySelectorAll('.project-card').forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
-        
+
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
     });
-    
+
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });
@@ -86,7 +94,7 @@ function updateScrollProgress() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrollProgress = (scrollTop / scrollHeight) * 100;
-    
+
     // You can use this to create a progress bar if needed
     // For now, we'll use it to add parallax effects
     const hero = document.querySelector('.hero');
@@ -109,7 +117,7 @@ if ('IntersectionObserver' in window) {
             }
         });
     });
-    
+
     document.querySelectorAll('.project-image img').forEach(img => {
         imageObserver.observe(img);
     });

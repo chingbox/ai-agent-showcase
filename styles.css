@@ -242,7 +242,7 @@ body {
 
     100% {
         opacity: 0.7;
-        filter: blur(70px) brightness(1.3);
+        filter: blur(90px) brightness(1.5);
     }
 }
 
@@ -314,11 +314,19 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    /* Slightly smaller max size */
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
     animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+/* Desktop: keep title on one line */
+@media (min-width: 769px) {
+    .hero-title span:not(.gradient-text) {
+        white-space: nowrap;
+    }
 }
 
 .gradient-text {
@@ -955,6 +963,29 @@ section {
     font-weight: 700;
     text-shadow: 0 0 10px rgba(127, 0, 255, 0.5);
 }
+
+/* ===== Cursor Glow ===== */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(127, 0, 255, 0.1) 20%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cursor-glow {
+        display: none;
+        /* Disable on mobile for performance */
+    }
+}
+
 
 /* ===== Music & Lyrics Controls ===== */
 .music-controls {
