@@ -1121,6 +1121,15 @@ section {
     padding-left: 0.8rem;
 }
 
+.zh-lyrics {
+    display: block;
+    font-size: 0.85em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.8rem;
+    margin-top: 0.2rem;
+    font-weight: normal;
+}
+
 /* Custom Scrollbar */
 .lyrics-content::-webkit-scrollbar {
     width: 4px;
