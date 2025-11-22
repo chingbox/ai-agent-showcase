@@ -1,25 +1,25 @@
 /* ===== CSS Variables & Design System ===== */
 :root {
-    /* Colors - Dark Theme with AI Tech Aesthetics */
-    --color-bg-primary: #0a0e27;
-    --color-bg-secondary: #111827;
-    --color-bg-card: rgba(17, 24, 39, 0.6);
-    --color-bg-card-hover: rgba(17, 24, 39, 0.8);
+    /* Colors - Updated to match poster design */
+    --color-bg-primary: #2b2d42;
+    --color-bg-secondary: #1f2137;
+    --color-bg-card: rgba(43, 45, 66, 0.6);
+    --color-bg-card-hover: rgba(43, 45, 66, 0.8);
 
-    /* Accent Colors */
-    --color-primary: #00d4ff;
-    --color-secondary: #8b5cf6;
-    --color-accent: #00ff88;
-    --color-text-primary: #f9fafb;
+    /* Accent Colors - Poster inspired purple-blue gradient */
+    --color-primary: #b8b8d1;
+    --color-secondary: #a8c5dd;
+    --color-accent: #d4a5d4;
+    --color-text-primary: #ffffff;
     --color-text-secondary: #d1d5db;
     --color-text-muted: #9ca3af;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);
-    --gradient-accent: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-    --gradient-orb-1: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
-    --gradient-orb-2: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
-    --gradient-orb-3: radial-gradient(circle, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+    /* Gradients - Poster style purple to blue */
+    --gradient-primary: linear-gradient(135deg, #b8b8d1 0%, #a8c5dd 100%);
+    --gradient-accent: linear-gradient(135deg, #d4a5d4 0%, #b8b8d1 100%);
+    --gradient-orb-1: radial-gradient(circle, rgba(184, 184, 209, 0.15) 0%, transparent 70%);
+    --gradient-orb-2: radial-gradient(circle, rgba(168, 197, 221, 0.15) 0%, transparent 70%);
+    --gradient-orb-3: radial-gradient(circle, rgba(212, 165, 212, 0.1) 0%, transparent 70%);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -40,12 +40,12 @@
     --radius-lg: 1.5rem;
     --radius-xl: 2rem;
 
-    /* Shadows */
+    /* Shadows - Updated for new color scheme */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.3);
-    --shadow-glow-accent: 0 0 40px rgba(0, 255, 136, 0.3);
+    --shadow-glow: 0 0 40px rgba(184, 184, 209, 0.3);
+    --shadow-glow-accent: 0 0 40px rgba(168, 197, 221, 0.3);
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -87,57 +87,58 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    background: var(--color-bg-primary);
 }
 
-.orb {
+/* Gradient overlay for depth */
+.bg-animation::before {
+    content: '';
     position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(184, 184, 209, 0.05) 0%,
+            rgba(168, 197, 221, 0.05) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Dot Wave Pattern */
+.dot-wave {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 2px, transparent 2px);
+    background-size: 30px 30px;
+    animation: flowDots 20s linear infinite;
+    transform: rotate(-15deg);
+}
+
+.dot-wave:nth-child(2) {
+    background-size: 25px 25px;
+    animation-duration: 25s;
+    animation-delay: -5s;
     opacity: 0.6;
-    animation: float 20s ease-in-out infinite;
 }
 
-.orb-1 {
-    width: 600px;
-    height: 600px;
-    background: var(--gradient-orb-1);
-    top: -200px;
-    left: -200px;
-    animation-delay: 0s;
+.dot-wave:nth-child(3) {
+    background-size: 35px 35px;
+    animation-duration: 30s;
+    animation-delay: -10s;
+    opacity: 0.4;
 }
 
-.orb-2 {
-    width: 500px;
-    height: 500px;
-    background: var(--gradient-orb-2);
-    bottom: -150px;
-    right: -150px;
-    animation-delay: 5s;
-}
+@keyframes flowDots {
+    0% {
+        transform: rotate(-15deg) translate(0, 0);
+    }
 
-.orb-3 {
-    width: 400px;
-    height: 400px;
-    background: var(--gradient-orb-3);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation-delay: 10s;
-}
-
-@keyframes float {
-
-    0%,
     100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    33% {
-        transform: translate(50px, -50px) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-50px, 50px) scale(0.9);
+        transform: rotate(-15deg) translate(50px, 50px);
     }
 }
 
@@ -246,7 +247,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 60px rgba(184, 184, 209, 0.5);
 }
 
 /* ===== Hero Instructors Section ===== */
@@ -293,7 +294,7 @@ body {
 
 .instructor-avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 60px rgba(184, 184, 209, 0.5);
 }
 
 .instructor-avatar img {
