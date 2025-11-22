@@ -666,15 +666,23 @@ section {
 
 .timeline-title {
     font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0.5rem;
     color: var(--color-text-primary);
+}
+
+.timeline-instructor {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: inline-block;
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
 }
 
 .timeline-description {
     color: var(--color-text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 .timeline-photo {
